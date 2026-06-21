@@ -609,21 +609,33 @@ html { scroll-behavior: smooth; }
 </div>
 </div>
 
-<!-- Цитата под фото с эффектом свечения и логотипом JLight -->
-<div class="mt-6 relative" style="min-height: 140px; padding: 20px;">
-  <!-- Фоновое свечение -->
-  <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 80%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.03) 50%, transparent 70%); pointer-events: none;"></div>
+<!-- Цитата со свечением из центра и местом для логотипа -->
+<div class="relative py-12 sm:py-16 px-4 sm:px-8">
+  <!-- Свечение из центра цитаты -->
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-full" 
+       style="background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.03) 40%, transparent 70%); 
+              filter: blur(30px); pointer-events: none;">
+  </div>
   
-  <!-- Цитата -->
-  <p class="text-base sm:text-lg md:text-xl italic serif leading-relaxed relative z-10 mb-6" style="color: #D4B896; text-shadow: 0 0 20px rgba(212, 184, 150, 0.3);">
+  <!-- Текст цитаты -->
+  <p class="text-lg sm:text-xl md:text-2xl italic serif leading-relaxed text-center relative z-10 mb-8 sm:mb-12" 
+     style="color: #D4B896; text-shadow: 0 0 30px rgba(212, 184, 150, 0.4);">
     Моя цель — не просто «утешить» вас. Моя цель — вернуть вам вашу субъектность, телесную опору и право на собственную жизнь.
   </p>
   
-  <!-- Логотип JLight в правом нижнем углу -->
-  <div class="absolute bottom-0 right-4 sm:right-6 z-10" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px; color: #D4B896; text-shadow: 0 0 15px rgba(212, 184, 150, 0.6), 0 0 30px rgba(255,255,255,0.3); letter-spacing: 1px;">
-    JLight
+  <!-- Место для логотипа JLight (вставьте сюда фото с логотипом) -->
+  <div class="relative z-10 flex justify-end">
+    <div class="w-32 sm:w-40 md:w-48 h-auto">
+      <!-- ЗАМЕНИТЕ src НА ПУТЬ К ВАШЕМУ ЛОГОТИПУ -->
+      <img src="jlight-logo.png" alt="JLight" class="w-full h-auto object-contain">
+      
+      <!-- Если логотипа нет, удалите <img> выше и раскомментируйте текст ниже: -->
+      <!-- <div class="text-right" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px; color: #D4B896; text-shadow: 0 0 15px rgba(212, 184, 150, 0.5);">JLight</div> -->
+    </div>
   </div>
 </div>
+
+
 
 
   <!-- Текст справа -->
