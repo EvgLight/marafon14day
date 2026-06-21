@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Перезагрузка за 14 дней — практический марафон по восстановлению после расставания и развода. Доказательная психология.">
+<title>Перезагрузка за 14 дней | Восстановление после расставания</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #0a0a0a; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: #e8e8e8; }
+.serif { font-family: 'Playfair Display', serif; }
+.cormorant { font-family: 'Cormorant Garamond', serif; }
+
+.progress-bar {
+position: fixed;
+top: 0;
+left: 0;
+height: 2px;
+background: linear-gradient(90deg, #A2897A 0%, #D4B896 50%, #A2897A 100%);
+z-index: 1000;
+transition: width 0.1s ease;
+box-shadow: 0 0 10px rgba(162, 137, 122, 0.5);
+}
+
+.gradient-animate {
+background: linear-gradient(-45deg, #0a0a0a, #1a1512, #0f0f0f, #1a1512);
+background-size: 400% 400%;
+animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+
+.glass {
+background: rgba(41, 31, 28, 0.4);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(162, 137, 122, 0.15);
+}
+
+.glass-light {
+background: rgba(41, 31, 28, 0.6);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(162, 137, 122, 0.25);
+}
+
+.text-gradient {
+background: linear-gradient(135deg, #A2897A 0%, #D4B896 50%, #C4A882 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.silver-gradient {
+background: linear-gradient(180deg, #f5f5f5 0%, #c0c0c0 40%, #a8a8a8 60%, #e8e8e8 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.gold-glow {
+box-shadow: 0 0 30px rgba(162, 137, 122, 0.4), 0 0 60px rgba(162, 137, 122, 0.15);
+}
+
+.float { animation: float 6s ease-in-out infinite; }
+@keyframes float {
+0%, 100% { transform: translateY(0px); }
+50% { transform: translateY(-12px); }
+}
+
+.door-card {
+transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+transform-style: preserve-3d;
+background: linear-gradient(135deg, rgba(41, 31, 28, 0.6), rgba(10, 10, 10, 0.9));
+border: 1px solid rgba(162, 137, 122, 0.2);
+position: relative;
+overflow: hidden;
+}
+
+.door-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent, rgba(162, 137, 122, 0.5), transparent);
+}
+
+.door-card:hover {
+transform: translateY(-6px);
+box-shadow: 0 20px 40px rgba(162, 137, 122, 0.2), 0 0 30px rgba(162, 137, 122, 0.1);
+border-color: rgba(162, 137, 122, 0.4);
+}
+
+.door-card .icon-box {
+background: linear-gradient(135deg, #A2897A 0%, #6A544D 100%);
+box-shadow: 0 10px 30px rgba(162, 137, 122, 0.4);
+}
+
+.door-card .glow-bg {
+background: radial-gradient(circle, rgba(162, 137, 122, 0.15), transparent 70%);
+}
+
+.reveal {
+opacity: 0;
+transform: translateY(20px);
+transition: all 0.7s ease;
+}
+.reveal.active {
+opacity: 1;
+transform: translateY(0);
+}
+
+.particles {
+position: absolute;
+inset: 0;
+overflow: hidden;
+pointer-events: none;
+}
+.particle {
+position: absolute;
+width: 3px;
+height: 3px;
+background: rgba(162, 137, 122, 0.6);
+border-radius: 50%;
+box-shadow: 0 0 8px rgba(162, 137, 122, 0.8);
+animation: particle-float 20s infinite;
+}
+@keyframes particle-float {
+0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+10% { opacity: 1; }
+90% { opacity: 1; }
+100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+.highlight-box {
+background: linear-gradient(135deg, rgba(162, 137, 122, 0.1), rgba(10, 10, 10, 0.9));
+border-left: 3px solid #A2897A;
+}
+
+.scroll-top {
+position: fixed;
+bottom: 30px;
+right: 30px;
+width: 50px;
+height: 50px;
+background: linear-gradient(135deg, #A2897A 0%, #6A544D 100%);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+opacity: 0;
+visibility: hidden;
+transition: all 0.3s ease;
+z-index: 999;
+box-shadow: 0 8px 24px rgba(162, 137, 122, 0.4);
+}
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(162, 137, 122, 0.6); }
+
+.premium-btn {
+background: linear-gradient(135deg, #A2897A 0%, #6A544D 50%, #A2897A 100%);
+position: relative;
+overflow: hidden;
+}
+.premium-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+transition: left 0.5s;
+}
+.premium-btn:hover::before { left: 100%; }
+
+.counter-card {
+background: linear-gradient(135deg, rgba(41, 31, 28, 0.5), rgba(10, 10, 10, 0.9));
+border: 1px solid rgba(162, 137, 122, 0.2);
+transition: all 0.3s ease;
+}
+.counter-card:hover {
+transform: translateY(-4px);
+border-color: rgba(162, 137, 122, 0.4);
+box-shadow: 0 10px 24px rgba(162, 137, 122, 0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+.section-divider {
+height: 1px;
+background: linear-gradient(90deg, transparent, rgba(162, 137, 122, 0.3), transparent);
+}
+
+.text-glow {
+text-shadow: 0 0 20px rgba(162, 137, 122, 0.4), 0 0 40px rgba(162, 137, 122, 0.2);
+}
+
+.readable-text { line-height: 1.75; letter-spacing: 0.01em; }
+
+/* Карусель */
+.carousel-container { position: relative; overflow: hidden; }
+.carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.carousel-slide { min-width: 100%; padding: 0 10px; }
+@media (min-width: 768px) { .carousel-slide { min-width: 50%; } }
+@media (min-width: 1024px) { .carousel-slide { min-width: 33.333%; } }
+.carousel-btn {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background: linear-gradient(135deg, #A2897A 0%, #6A544D 100%);
+border: none;
+width: 48px;
+height: 48px;
+border-radius: 50%;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s ease;
+z-index: 10;
+box-shadow: 0 5px 20px rgba(162, 137, 122, 0.4);
+}
+.carousel-btn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 8px 30px rgba(162, 137, 122, 0.6); }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+.carousel-dot {
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background: rgba(162, 137, 122, 0.3);
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.carousel-dot.active { background: #A2897A; width: 24px; border-radius: 4px; }
+
+/* Аккордеон */
+.accordion-item {
+background: linear-gradient(135deg, rgba(41, 31, 28, 0.5), rgba(10, 10, 10, 0.9));
+border: 1px solid rgba(162, 137, 122, 0.2);
+border-radius: 16px;
+margin-bottom: 16px;
+overflow: hidden;
+transition: all 0.3s ease;
+}
+.accordion-item:hover { border-color: rgba(162, 137, 122, 0.4); }
+.accordion-header {
+padding: 24px 28px;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+transition: all 0.3s ease;
+}
+.accordion-header:hover { background: rgba(162, 137, 122, 0.05); }
+.accordion-icon {
+width: 32px;
+height: 32px;
+background: linear-gradient(135deg, #A2897A 0%, #6A544D 100%);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: transform 0.3s ease;
+flex-shrink: 0;
+box-shadow: 0 4px 12px rgba(162, 137, 122, 0.3);
+}
+.accordion-item.active .accordion-icon { transform: rotate(45deg); }
+.accordion-content {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease, padding 0.4s ease;
+padding: 0 28px;
+}
+.accordion-item.active .accordion-content { max-height: 300px; padding: 0 28px 24px; }
+
+@media (max-width: 640px) { .text-balance { text-wrap: balance; } }
+</style>
+</head>
+<body class="antialiased">
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen gradient-animate flex items-center justify-center overflow-hidden">
+<div class="particles" id="particles"></div>
+<div class="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl animate-pulse" style="background: rgba(162, 137, 122, 0.15);"></div>
+<div class="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl animate-pulse" style="background: rgba(106, 84, 77, 0.15); animation-delay: 1s;"></div>
+
+<div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 py-16 md:py-20 text-center">
+<div class="reveal active">
+<div class="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 glass rounded-full text-sm font-medium mb-6 sm:mb-8 float" style="color: #D4B896;">
+<span class="w-2 h-2 rounded-full animate-pulse" style="background: #A2897A;"></span>
+Практический марафон • 14 дней • Доказательная психология
+</div>
+
+<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-5 sm:mb-6 leading-tight">
+<span class="block mb-2 serif italic text-glow" style="color: #D4B896;">Перезагрузка</span>
+<span class="silver-gradient block sm:inline">за 14 дней</span>
+</h1>
+
+<p class="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto font-light leading-relaxed mb-6 sm:mb-8 text-balance" style="color: #A6A6A6;">
+Верни контроль над жизнью, телом и самооценкой после тяжелого расставания.<br class="hidden sm:block">
+<span class="font-semibold" style="color: #D4B896;">Без эзотерики и пустых аффирмаций</span><br class="hidden sm:block">
+<span style="color: #e8e8e8;">Только доказательная психология, соматика и поведенческая активация</span>
+</p>
+
+<div class="flex flex-col gap-4 sm:gap-6 justify-center items-center pt-4 sm:pt-8">
+<a href="#pricing" class="group premium-btn w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg transition-all transform hover:scale-105 gold-glow" style="color: #0a0a0a;">
+<span class="flex items-center justify-center gap-2">
+Забронировать место в потоке
+<svg class="w-5 h-5 group-hover:translate-x-1 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+</svg>
+</span>
+</a>
+<div class="text-xs sm:text-sm space-y-1 text-center" style="color: #A6A6A6;">
+<div>✓ Старт ближайшего потока — [Дата]</div>
+<div>✓ Осталось [X] мест</div>
+</div>
+</div>
+
+<div class="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 md:gap-8 max-w-3xl mx-auto">
+<div class="counter-card rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
+<div class="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-1 sm:mb-2">14</div>
+<div class="text-xs sm:text-sm" style="color: #A6A6A6;">дней практики</div>
+</div>
+<div class="counter-card rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
+<div class="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-1 sm:mb-2">4</div>
+<div class="text-xs sm:text-sm" style="color: #A6A6A6;">блока работы</div>
+</div>
+<div class="counter-card rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
+<div class="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-1 sm:mb-2">50+</div>
+<div class="text-xs sm:text-sm" style="color: #A6A6A6;">практик</div>
+</div>
+<div class="counter-card rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
+<div class="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-1 sm:mb-2">24/7</div>
+<div class="text-xs sm:text-sm" style="color: #A6A6A6;">поддержка</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+<svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #A2897A;">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+</svg>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Проблема -->
+<section class="py-16 sm:py-24 md:py-32 bg-black relative overflow-hidden">
+<div class="max-w-3xl mx-auto px-5 sm:px-6">
+<div class="text-center mb-10 sm:mb-14 md:mb-16 reveal">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 serif leading-tight">
+<span class="silver-gradient">Земля ушла</span><br>
+<span class="text-gradient italic">из-под ног?</span>
+</h2>
+</div>
+
+<div class="space-y-6 sm:space-y-8 reveal">
+<p class="text-base sm:text-lg md:text-xl leading-relaxed font-light cormorant" style="color: #C4C4C4;">
+Ты просыпаешься с тяжестью в груди. По привычке проверяешь его онлайн. Прокручиваешь в голове бесконечные диалоги: «Почему он так поступил?», «Что со мной не так?».
+</p>
+<p class="text-base sm:text-lg md:text-xl leading-relaxed cormorant" style="color: #C4C4C4;">
+Ты чувствуешь себя опустошенной, а твое тело словно парализовано тревогой.
+</p>
+
+<div class="glass-light p-6 sm:p-8 md:p-10 rounded-2xl my-6 sm:my-8 shadow-2xl">
+<p class="text-xl sm:text-2xl font-semibold text-center mb-4 sm:mb-6 text-gradient serif italic">
+После расставания бесполезно уговаривать себя фразами «Я сильная, я справлюсь».
+</p>
+<p class="text-center text-sm sm:text-base md:text-lg leading-relaxed readable-text" style="color: #C4C4C4;">
+Мозг в состоянии стресса в это не верит. Он находится в режиме выживания.<br>
+<span class="font-semibold text-base sm:text-lg md:text-xl inline-block mt-2" style="color: #D4B896;">
+Тебе не нужно «просто отпустить». Тебе нужно вернуть себе опору.
+</span>
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Решение -->
+<section class="py-16 sm:py-24 md:py-32 relative overflow-hidden" style="background: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);">
+<div class="max-w-5xl mx-auto px-5 sm:px-6">
+<div class="text-center mb-10 sm:mb-14 md:mb-16 reveal">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 serif leading-tight">
+<span class="silver-gradient">Как мы будем</span><br>
+<span class="text-gradient italic">работать?</span>
+</h2>
+<p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto cormorant italic" style="color: #A6A6A6;">
+Этот марафон — не про «успешный успех» и не про «всем вокруг я должна»
+</p>
+</div>
+
+<div class="space-y-6 reveal">
+<div class="door-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10">
+<p class="text-base sm:text-lg md:text-xl leading-relaxed cormorant" style="color: #e8e8e8;">
+В его основе лежит принцип <span class="font-semibold text-gradient">поведенческой активации</span>. Психика и самооценка восстанавливаются не через абстрактное внушение, а через конкретные физические действия, которые доказывают твоему мозгу безопасность, автономность и твою ценность.
+</p>
+</div>
+
+<div class="grid sm:grid-cols-3 gap-4 sm:gap-6">
+<div class="door-card rounded-2xl p-5 sm:p-6 text-center group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center mb-4 mx-auto text-2xl">🌿</div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Начинаем с тела</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Заземление и работа с тревогой через физиологию</p>
+</div>
+</div>
+
+<div class="door-card rounded-2xl p-5 sm:p-6 text-center group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center mb-4 mx-auto text-2xl">🌊</div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Проживаем боль</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Экологичное проживание горя и эмоций</p>
+</div>
+</div>
+
+<div class="door-card rounded-2xl p-5 sm:p-6 text-center group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center mb-4 mx-auto text-2xl"></div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Проектируем будущее</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Планирование новой жизни и целей</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Об авторе -->
+<section class="py-16 sm:py-24 md:py-32 bg-black relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-5 sm:px-6">
+<div class="text-center mb-10 sm:mb-14 md:mb-16 reveal">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 serif leading-tight">
+<span class="silver-gradient">Я не обещаю</span><br>
+<span class="text-gradient italic">«волшебную таблетку»</span>
+</h2>
+<p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto cormorant italic" style="color: #A6A6A6;">
+Я даю работающую карту выхода
+</p>
+</div>
+
+<div class="grid lg:grid-cols-5 gap-8 sm:gap-10 md:gap-12 items-center reveal">
+<div class="lg:col-span-2">
+<div class="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#A2897A]/30">
+<div class="relative w-full" style="padding-bottom: 133%; background: linear-gradient(135deg, #291F1C 0%, #6A544D 50%, #291F1C 100%);">
+<div <img src="10.jpeg" alt="Евгения Легкая" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+</div>
+</div>
+<div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+<div class="glass rounded-xl sm:rounded-2xl p-3 sm:p-5 border border-[#A2897A]/30">
+<div class="flex items-center justify-between flex-wrap gap-3 sm:gap-4">
+<div>
+<div class="text-lg sm:text-xl font-bold text-white serif">Евгения Легкая</div>
+<div class="text-xs sm:text-sm" style="color: #D4B896;">Эксперт • Практик</div>
+</div>
+<div class="grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-1 text-xs" style="color: #A6A6A6;">
+<div>КПТ, Гештальт</div>
+<div>Теория привязанности</div>
+<div>Телесная терапия</div>
+<div>10+ лет опыта</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="lg:col-span-3 space-y-5 sm:space-y-6">
+<div class="space-y-5 sm:space-y-6 text-base sm:text-lg leading-relaxed readable-text cormorant">
+<p class="text-base sm:text-lg md:text-xl" style="color: #e8e8e8;">
+Меня зовут <span class="font-semibold text-gradient">Евгения Легкая</span>, и я специализируюсь на помощи женщинам в точках наибольшего жизненного слома: тяжёлый развод, выход из созависимых отношений и восстановление после эмоционального кризиса.
+</p>
+
+<div class="glass-light p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-[#A2897A]/30">
+<p class="text-base sm:text-lg font-semibold mb-2 sm:mb-3" style="color: #D4B896;">
+«Мой подход — это не эзотерика, не "успешный успех" и не пустые аффирмации»
+</p>
+<p class="leading-relaxed text-sm sm:text-base" style="color: #A6A6A6;">
+В основе моей 4-шаговой системы лежит доказательная психология: когнитивно-поведенческая терапия (КПТ), гештальт-подход, теория привязанности и телесно-ориентированная терапия.
+</p>
+</div>
+
+<p class="text-base sm:text-lg" style="color: #e8e8e8;">
+Моя цель — не просто «утешить» вас. Моя цель — вернуть вам вашу субъектность, телесную опору и право на собственную жизнь.
+</p>
+</div>
+</div>
+</div>
+
+<!-- 4-шаговая система -->
+<div class="mt-16 sm:mt-20 md:mt-24 reveal">
+<div class="text-center mb-10 sm:mb-14">
+<h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 serif leading-tight">
+<span class="silver-gradient">4-шаговая система</span><br>
+<span class="text-gradient italic">восстановления</span>
+</h3>
+</div>
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+<div class="door-card rounded-2xl p-6 group">
+<div class="icon-box w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl font-bold serif">1</div>
+<h4 class="text-lg font-bold mb-2 serif text-gradient">Детокс</h4>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Остановка кровотечения. Изоляция от триггеров, стабилизация нервной системы.</p>
+</div>
+<div class="door-card rounded-2xl p-6 group">
+<div class="icon-box w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl font-bold serif">2</div>
+<h4 class="text-lg font-bold mb-2 serif text-gradient">Аутопсия</h4>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Честный разбор того, почему отношения умерли. Снятие розовых очков.</p>
+</div>
+<div class="door-card rounded-2xl p-6 group">
+<div class="icon-box w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl font-bold serif">3</div>
+<h4 class="text-lg font-bold mb-2 serif text-gradient">Возвращение себе себя</h4>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Сборка самооценки, поиск своих желаний, восстановление личных границ.</p>
+</div>
+<div class="door-card rounded-2xl p-6 group">
+<div class="icon-box w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl font-bold serif">4</div>
+<h4 class="text-lg font-bold mb-2 serif text-gradient">Редизайн будущего</h4>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Постановка новых целей, выход в мир, готовность к новым отношениям.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Кейсы - Карусель -->
+<section class="py-16 sm:py-24 md:py-32 relative" style="background: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);">
+<div class="max-w-7xl mx-auto px-5 sm:px-6">
+<div class="text-center mb-10 sm:mb-14 md:mb-16 reveal">
+<div class="inline-block px-4 sm:px-6 py-2 sm:py-3 glass rounded-full text-sm font-semibold mb-4 sm:mb-6" style="color: #D4B896; border: 1px solid rgba(162, 137, 122, 0.2);">
+ИЗ ПРАКТИКИ
+</div>
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 serif leading-tight">
+<span class="silver-gradient">Кейсы и</span><br>
+<span class="text-gradient italic">точки Б</span>
+</h2>
+</div>
+
+<div class="carousel-container reveal">
+<div class="carousel-track" id="carouselTrack">
+<div class="carousel-slide">
+<div class="door-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full">
+<div class="text-xs uppercase tracking-widest mb-4 font-semibold" style="color: #D4B896;">Хардкор-кейс</div>
+<p class="text-base sm:text-lg leading-relaxed cormorant mb-4" style="color: #e8e8e8;">
+Женщина после 15 лет брака узнаёт об измене. Муж уходит, оставляя её с детьми и кредитами. Самооценка ниже плинтуса: «я старая и некрасивая».
+</p>
+<p class="text-sm leading-relaxed cormorant" style="color: #A6A6A6;">
+<span class="font-semibold text-gradient">Что сделали:</span> Сначала жёсткая стабилизация (сон, еда, адвокаты). Затем работа со страхами. Через 3 месяца по системе женщина перестала плакать, нашла новую работу, начала ходить на танцы. Бывший муж для неё — просто пустое место.
+</p>
+</div>
+</div>
+
+<div class="carousel-slide">
+<div class="door-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full">
+<div class="text-xs uppercase tracking-widest mb-4 font-semibold" style="color: #D4B896;">Инсайт, переворачивающий сознание</div>
+<p class="text-base sm:text-lg leading-relaxed cormorant mb-4 italic" style="color: #e8e8e8;">
+«Почему он меня не любил так, как я его?»
+</p>
+<p class="text-sm leading-relaxed cormorant" style="color: #A6A6A6;">
+<span class="font-semibold text-gradient">Ответ:</span> «Он любил тебя ровно на тот объём, который в него помещался. У него внутри — напёрсток, а ты требуешь, чтобы он наполнил твой океан. Дело не в том, что ты плохая. Просто в него больше не влезает».
+</p>
+</div>
+</div>
+
+<div class="carousel-slide">
+<div class="door-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full">
+<div class="text-xs uppercase tracking-widest mb-4 font-semibold" style="color: #D4B896;">Критерий успеха — Точка Б</div>
+<p class="text-base sm:text-lg leading-relaxed cormorant" style="color: #e8e8e8;">
+Точка Б — это не когда женщина «нашла нового мужа». <span class="font-semibold text-gradient">Точка Б — это спокойное равнодушие.</span> Когда она может случайно встретить бывшего на улице, поздороваться и пойти дальше пить свой кофе, не испытывая ни гнева, ни дрожи в коленях.
+</p>
+</div>
+</div>
+</div>
+
+<button class="carousel-btn prev" id="prevBtn">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #0a0a0a;">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+</svg>
+</button>
+<button class="carousel-btn next" id="nextBtn">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #0a0a0a;">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+</svg>
+</button>
+
+<div class="carousel-dots" id="carouselDots">
+<div class="carousel-dot active" data-index="0"></div>
+<div class="carousel-dot" data-index="1"></div>
+<div class="carousel-dot" data-index="2"></div>
+</div>
+</div>
+
+<div class="mt-10 sm:mt-14 md:mt-16 text-center reveal">
+<div class="glass-light p-6 sm:p-8 md:p-10 rounded-2xl border border-[#A2897A]/30 inline-block max-w-3xl">
+<p class="text-xl sm:text-2xl font-semibold serif italic leading-snug text-gradient">
+«Развод или расставание — это не конец вашей жизни. Это конец иллюзий. И самое подходящее время, чтобы наконец-то познакомиться с самым главным человеком в вашей жизни — с самой собой»
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Для кого -->
+<section class="py-16 sm:py-24 md:py-32 bg-black">
+<div class="max-w-4xl mx-auto px-5 sm:px-6">
+<div class="text-center mb-10 sm:mb-14 md:mb-16 reveal">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 serif leading-tight">
+<span class="silver-gradient">Этот марафон</span><br>
+<span class="text-gradient italic">для тебя, если...</span>
+</h2>
+</div>
+
+<div class="space-y-4 reveal">
+<div class="door-card rounded-2xl p-5 sm:p-6 flex items-start gap-4">
+<div class="icon-box w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm font-bold" style="color: #0a0a0a;">✓</div>
+<p class="cormorant text-lg" style="color: #e8e8e8;">Ты недавно пережила тяжёлый развод или болезненное расставание</p>
+</div>
+<div class="door-card rounded-2xl p-5 sm:p-6 flex items-start gap-4">
+<div class="icon-box w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm font-bold" style="color: #0a0a0a;">✓</div>
+<p class="cormorant text-lg" style="color: #e8e8e8;">Ты пытаешься выйти из деструктивных, созависимых отношений</p>
+</div>
+<div class="door-card rounded-2xl p-5 sm:p-6 flex items-start gap-4">
+<div class="icon-box w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm font-bold" style="color: #0a0a0a;">✓</div>
+<p class="cormorant text-lg" style="color: #e8e8e8;">Ты устала от навязчивых мыслей и хочешь вернуть себе фокус на свою жизнь</p>
+</div>
+<div class="door-card rounded-2xl p-5 sm:p-6 flex items-start gap-4">
+<div class="icon-box w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm font-bold" style="color: #0a0a0a;">✓</div>
+<p class="cormorant text-lg" style="color: #e8e8e8;">Ты готова работать: выполнять телесные практики, писать письма и менять рутину</p>
+</div>
+</div>
+
+<div class="mt-8 door-card rounded-2xl p-6 sm:p-8 reveal" style="border-color: rgba(220, 80, 80, 0.3);">
+<p class="cormorant text-base sm:text-lg" style="color: #e8e8e8;">
+<span class="font-bold text-gradient">️ Важно:</span> Марафон НЕ подходит, если ты находишься в состоянии клинической депрессии (не можешь встать с кровати неделями, есть мысли о нежелании жить). В этом случае тебе нужна медицинская помощь, а не групповая работа.
+</p>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Программа -->
+<section class="py-16 sm:py-24 md:py-32 relative" style="background: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);">
+<div class="max-w-6xl mx-auto px-5 sm:px-6">
+<div class="text-center mb-10 sm:mb-14 md:mb-16 reveal">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 serif leading-tight">
+<span class="silver-gradient">Твой маршрут</span><br>
+<span class="text-gradient italic">на 14 дней</span>
+</h2>
+<p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto cormorant italic" style="color: #A6A6A6;">
+Три блока работы: от острой боли к новой жизни
+</p>
+</div>
+
+<div class="space-y-6 sm:space-y-8 reveal">
+<div class="door-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 group">
+<div class="absolute top-0 right-0 w-32 h-32 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="flex items-start gap-4 mb-6">
+<div class="icon-box w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold serif flex-shrink-0">01</div>
+<div>
+<h3 class="text-xl sm:text-2xl font-bold mb-1 serif text-gradient">Блок 1: Стабилизация</h3>
+<p class="text-xs sm:text-sm" style="color: #A6A6A6;">Дни 1–4</p>
+</div>
+</div>
+<p class="mb-4 cormorant text-base sm:text-lg" style="color: #e8e8e8;">Купируем острую боль, останавливаем панику и навязчивый мысленный поток.</p>
+<ul class="space-y-2 text-sm sm:text-base cormorant" style="color: #A6A6A6;">
+<li class="flex items-start gap-2"><span class="text-gradient flex-shrink-0">✦</span> Техники заземления и разделения «Факты vs Эмоции»</li>
+<li class="flex items-start gap-2"><span class="text-gradient flex-shrink-0">✦</span> Цифровая гигиена и сброс алгоритмов зависимости</li>
+<li class="flex items-start gap-2"><span class="text-gradient flex-shrink-0">✦</span> Соматический сброс гнева и легализация своих границ</li>
+</ul>
+<div class="mt-6 p-4 rounded-xl" style="background: rgba(162, 137, 122, 0.1); border-left: 3px solid #A2897A;">
+<p class="text-sm cormorant" style="color: #D4B896;"><span class="font-semibold">Итог:</span> Тело перестаёт трясти, сон выравнивается, уходит фоновая паника.</p>
+</div>
+</div>
+</div>
+
+<div class="door-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 group">
+<div class="absolute top-0 right-0 w-32 h-32 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="flex items-start gap-4 mb-6">
+<div class="icon-box w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold serif flex-shrink-0">02</div>
+<div>
+<h3 class="text-xl sm:text-2xl font-bold mb-1 serif text-gradient">Блок 2: Деконструкция иллюзий</h3>
+<p class="text-xs sm:text-sm" style="color: #A6A6A6;">Дни 5–9</p>
+</div>
+</div>
+<p class="mb-4 cormorant text-base sm:text-lg" style="color: #e8e8e8;">Бережно выводим из позиции жертвы и возвращаем идентичность.</p>
+<ul class="space-y-2 text-sm sm:text-base cormorant" style="color: #A6A6A6;">
+<li class="flex items-start gap-2"><span class="text-gradient flex-shrink-0">✦</span> Оплакивание неслучившегося будущего</li>
+<li class="flex items-start gap-2"><span class="text-gradient flex-shrink-0">✦</span> Поиск скрытых выгод от страдания</li>
+<li class="flex items-start gap-2"><span class="text-gradient flex-shrink-0">✦</span> Возвращение автономии: кто я без него?</li>
+</ul>
+<div class="mt-6 p-4 rounded-xl" style="background: rgba(162, 137, 122, 0.1); border-left: 3px solid #A2897A;">
+<p class="text-sm cormorant" style="color: #D4B896;"><span class="font-semibold">Итог:</span> Разрушена эмоциональная созависимость. Ты снова чувствуешь своё тело и свои желания.</p>
+</div>
+</div>
+</div>
+
+<div class="door-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 group">
+<div class="absolute top-0 right-0 w-32 h-32 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="flex items-start gap-4 mb-6">
+<div class="icon-box w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold serif flex-shrink-0">03</div>
+<div>
+<h3 class="text-xl sm:text-2xl font-bold mb-1 serif text-gradient">Блок 3: Авторство жизни</h3>
+<p class="text-xs sm:text-sm" style="color: #A6A6A6;">Дни 10–14</p>
+</div>
+</div>
+<p class="mb-4 cormorant text-base sm:text-lg" style="color: #e8e8e8;">Закрепляем результат, выстраиваем границы и планируем новое.</p>
+<ul class="space-y-2 text-sm sm:text-base cormorant" style="color: #A6A6A6;">
+<li class="flex items-start gap-2"><span class="text-gradient flex-shrink-0">✦</span> Самосострадание и аудит ресурсов</li>
+<li class="flex items-start gap-2"><span class="text-gradient flex-shrink-0">✦</span> Личная Конституция (Билль о правах новой себя)</li>
+<li class="flex items-start gap-2"><span class="text-gradient flex-shrink-0">✦</span> SMART-планирование на 30 дней вперёд</li>
+</ul>
+<div class="mt-6 p-4 rounded-xl" style="background: rgba(162, 137, 122, 0.1); border-left: 3px solid #A2897A;">
+<p class="text-sm cormorant" style="color: #D4B896;"><span class="font-semibold">Итог:</span> Появляется понятный план, страх перед будущим уходит, ты забираешь 100% контроля над своей жизнью.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Формат -->
+<section class="py-16 sm:py-24 md:py-32 bg-black">
+<div class="max-w-5xl mx-auto px-5 sm:px-6">
+<div class="text-center mb-10 sm:mb-14 md:mb-16 reveal">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 serif leading-tight">
+<span class="silver-gradient">Как проходят</span><br>
+<span class="text-gradient italic">дни?</span>
+</h2>
+<p class="text-base sm:text-lg md:text-xl cormorant italic" style="color: #A6A6A6;">Каждое утро в закрытом чате ты получаешь:</p>
+</div>
+
+<div class="grid sm:grid-cols-2 gap-4 sm:gap-6 reveal">
+<div class="door-card rounded-2xl p-6 group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="text-2xl font-bold mb-2 serif text-gradient">01</div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Психологическая практика</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Письменные техники КПТ, Гештальта, Схема-терапии</p>
+</div>
+</div>
+<div class="door-card rounded-2xl p-6 group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="text-2xl font-bold mb-2 serif text-gradient">02</div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Действие для самооценки</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Маленькие, но важные шаги в реальном мире</p>
+</div>
+</div>
+<div class="door-card rounded-2xl p-6 group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="text-2xl font-bold mb-2 serif text-gradient">03</div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Телесная практика</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Йога, соматика, работа с дыханием</p>
+</div>
+</div>
+<div class="door-card rounded-2xl p-6 group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="text-2xl font-bold mb-2 serif text-gradient">04</div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Аудио-подкаст и медитация</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Бережная поддержка и объяснение нейробиологии процессов</p>
+</div>
+</div>
+</div>
+
+<div class="mt-10 text-center reveal">
+<div class="glass-light p-6 sm:p-8 rounded-2xl border border-[#A2897A]/30 inline-block">
+<p class="text-2xl sm:text-3xl font-bold mb-2 serif italic text-gradient">30–60 минут</p>
+<p class="text-sm cormorant italic" style="color: #A6A6A6;">в день • в своём темпе • материалы остаются навсегда</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Бонус -->
+<section class="py-16 sm:py-24 md:py-32 relative" style="background: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);">
+<div class="max-w-4xl mx-auto px-5 sm:px-6 text-center reveal">
+<div class="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 glass rounded-full text-xs sm:text-sm font-semibold mb-6" style="color: #D4B896; border: 1px solid rgba(162, 137, 122, 0.2);">
+🎁 Подарок каждому участнику
+</div>
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 serif leading-tight">
+<span class="silver-gradient">«Аптечка скорой</span><br>
+<span class="text-gradient italic">психологической помощи»</span>
+</h2>
+<div class="door-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10">
+<p class="text-base sm:text-lg md:text-xl leading-relaxed cormorant" style="color: #e8e8e8;">
+Твой персональный набор экстренных инструментов на случай, если накроет волна тоски или захочется написать ему. Физиологический стоп, правило 15 минут, кодовое слово для подруги — ты будешь знать, как спасти себя в любую секунду.
+</p>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Результаты -->
+<section class="py-16 sm:py-24 md:py-32 bg-black">
+<div class="max-w-5xl mx-auto px-5 sm:px-6">
+<div class="text-center mb-10 sm:mb-14 md:mb-16 reveal">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 serif leading-tight">
+<span class="silver-gradient">Что ты получишь</span><br>
+<span class="text-gradient italic">через 14 дней?</span>
+</h2>
+</div>
+
+<div class="grid sm:grid-cols-2 gap-4 sm:gap-6 reveal">
+<div class="door-card rounded-2xl p-6 group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="text-3xl mb-3"></div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Тело</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Уйдёт фоновое напряжение, ты перестанешь постоянно паниковать</p>
+</div>
+</div>
+<div class="door-card rounded-2xl p-6 group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="text-3xl mb-3">🏠</div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Пространство</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Ты очистишь дом, телефон и голову от триггеров и прошлого</p>
+</div>
+</div>
+<div class="door-card rounded-2xl p-6 group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="text-3xl mb-3">💪</div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">Опора</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Появится умение говорить твёрдое «нет» и чувство, что ты справляешься сама</p>
+</div>
+</div>
+<div class="door-card rounded-2xl p-6 group">
+<div class="absolute top-0 right-0 w-24 h-24 glow-bg rounded-full blur-3xl group-hover:opacity-100 opacity-50 transition-all"></div>
+<div class="relative">
+<div class="text-3xl mb-3">🗺️</div>
+<h3 class="text-lg font-bold mb-2 serif text-gradient">План</h3>
+<p class="text-sm cormorant" style="color: #A6A6A6;">Ты будешь точно знать, куда двигаться дальше в финансовом и личном плане</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Цена -->
+<section class="py-16 sm:py-24 md:py-32 relative" style="background: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);" id="pricing">
+<div class="max-w-5xl mx-auto px-5 sm:px-6">
+<div class="glass-light rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden reveal border border-[#A2897A]/30">
+<div class="p-6 sm:p-10 md:p-12 lg:p-16 text-center relative">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-2 bg-gradient-to-r from-[#A2897A] via-[#D4B896] to-[#A2897A]"></div>
+
+<div class="mb-8 sm:mb-10">
+<div class="text-2xl sm:text-3xl mb-2 sm:mb-3" style="color: #A6A6A6; text-decoration: line-through;">5000₽</div>
+<div class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-gradient mb-4 sm:mb-6 text-glow">1999₽</div>
+<div class="text-sm sm:text-lg md:text-xl font-medium px-2" style="color: #A6A6A6;">Единоразово. Никаких подписок и скрытых платежей.</div>
+</div>
+
+<a href="#" class="group premium-btn inline-block w-full sm:w-auto px-6 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 rounded-full font-bold text-base sm:text-lg md:text-xl transition-all transform hover:scale-105 gold-glow mb-6 sm:mb-10" style="color: #0a0a0a;">
+<span class="flex items-center justify-center gap-2 sm:gap-3">
+Получить доступ сейчас
+<svg class="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+</svg>
+</span>
+</a>
+
+<div class="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm" style="color: #A6A6A6;">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-gradient" fill="currentColor" viewBox="0 0 20 20">
+<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+</svg>
+<span>Мгновенный доступ</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-gradient" fill="currentColor" viewBox="0 0 20 20">
+<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+</svg>
+<span>Все будущие обновления</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-gradient" fill="currentColor" viewBox="0 0 20 20">
+<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+</svg>
+<span>Закрытое сообщество</span>
+</div>
+</div>
+</div>
+
+<div class="px-5 sm:px-12 py-5 sm:py-8 text-white" style="background: linear-gradient(90deg, #A2897A, #6A544D, #A2897A);">
+<div class="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs sm:text-sm font-medium" style="color: #0a0a0a;">
+<div class="flex items-center gap-2">✓ Без инфоцыганства</div>
+<div class="flex items-center gap-2">✓ Только практика</div>
+<div class="flex items-center gap-2">✓ Реальные кейсы</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- FAQ - Аккордеон -->
+<section class="py-16 sm:py-24 md:py-32 bg-black">
+<div class="max-w-4xl mx-auto px-5 sm:px-6">
+<div class="text-center mb-10 sm:mb-14 md:mb-16 reveal">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 serif leading-tight">
+<span class="silver-gradient">Частые</span><br>
+<span class="text-gradient italic">вопросы</span>
+</h2>
+</div>
+
+<div class="space-y-4 reveal">
+<div class="accordion-item">
+<div class="accordion-header">
+<h3 class="text-base sm:text-lg font-bold serif text-gradient pr-4">А если не будет получаться выполнять задания?</h3>
+<div class="accordion-icon">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #0a0a0a;">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+</svg>
+</div>
+</div>
+<div class="accordion-content">
+<p class="cormorant leading-relaxed" style="color: #A6A6A6;">Процесс идёт по спирали. Откаты — это нормально. У тебя будет «Аптечка» и поддержка, чтобы пройти через сложные моменты.</p>
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">
+<h3 class="text-base sm:text-lg font-bold serif text-gradient pr-4">Сколько времени в день нужно уделять?</h3>
+<div class="accordion-icon">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #0a0a0a;">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+</svg>
+</div>
+</div>
+<div class="accordion-content">
+<p class="cormorant leading-relaxed" style="color: #A6A6A6;">30–60 минут. Можно проходить в своём темпе — материалы останутся навсегда.</p>
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">
+<h3 class="text-base sm:text-lg font-bold serif text-gradient pr-4">Подойдёт, если расставание было давно?</h3>
+<div class="accordion-icon">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #0a0a0a;">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+</svg>
+</div>
+</div>
+<div class="accordion-content">
+<p class="cormorant leading-relaxed" style="color: #A6A6A6;">Да! Мы работаем с нейронными связями и телом, а не только с «свежей» болью.</p>
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">
+<h3 class="text-base sm:text-lg font-bold serif text-gradient pr-4">Как быстро получу доступ?</h3>
+<div class="accordion-icon">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #0a0a0a;">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+</svg>
+</div>
+</div>
+<div class="accordion-content">
+<p class="cormorant leading-relaxed" style="color: #A6A6A6;">Сразу после оплаты. Начнёшь уже сегодня.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Финальный CTA -->
+<section class="py-16 sm:py-24 md:py-32 relative overflow-hidden" style="background: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);">
+<div class="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl animate-pulse" style="background: rgba(162, 137, 122, 0.1);"></div>
+<div class="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl animate-pulse" style="background: rgba(106, 84, 77, 0.1); animation-delay: 1s;"></div>
+
+<div class="max-w-4xl mx-auto px-5 sm:px-6 text-center reveal relative z-10">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 md:mb-12 serif leading-tight">
+<span class="silver-gradient">Готова вернуть</span><br>
+<span class="text-gradient italic">себе себя?</span>
+</h2>
+
+<div class="space-y-6 sm:space-y-8 text-base sm:text-lg md:text-xl leading-relaxed readable-text mb-8 sm:mb-10 md:mb-12">
+<p class="text-lg sm:text-xl md:text-2xl cormorant" style="color: #e8e8e8;">
+14 дней назад ты могла начать новую жизнь.<br>
+Сегодня — лучший день, чтобы начать.
+</p>
+
+<div class="glass-light p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl border border-[#A2897A]/30">
+<p class="text-xl sm:text-2xl md:text-3xl font-bold leading-snug" style="color: #D4B896;">
+А можешь зайти сейчас и получить систему.
+Инструменты. Сообщество. Ускорение.
+</p>
+<p class="text-sm sm:text-base md:text-lg mt-3 sm:mt-4 readable-text cormorant" style="color: #A6A6A6;">
+И самое главное — чувство, что ты перестала быть туристом. Что ты стала строителем.
+</p>
+</div>
+</div>
+
+<a href="#pricing" class="premium-btn inline-block w-full sm:w-auto px-6 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 rounded-full font-bold text-base sm:text-lg md:text-xl transition-all transform hover:scale-105 gold-glow" style="color: #0a0a0a;">
+Забронировать место в марафоне →
+</a>
+
+<p class="mt-8 sm:mt-10 text-base sm:text-lg italic serif" style="color: #6A544D;">
+Не откладывай свою жизнь на потом.
+</p>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Footer -->
+<footer class="py-10 sm:py-12 md:py-16 border-t border-[#A2897A]/20" style="background: #050505;">
+<div class="max-w-6xl mx-auto px-5 sm:px-6">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
+<div class="text-center md:text-left">
+<div class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 serif text-glow text-gradient">Перезагрузка</div>
+<div class="text-xs sm:text-sm" style="color: #A6A6A6;">Марафон по восстановлению после расставания</div>
+</div>
+</div>
+<div class="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-[#A2897A]/10 text-center text-xs sm:text-sm space-y-2" style="color: #6A544D;">
+<p>© 2025. Все права защищены.</p>
+<p class="italic cormorant">Это не просто курс. Это твой путь к себе.</p>
+</div>
+</div>
+</footer>
+
+<div class="scroll-top" id="scrollTop" onclick="scrollToTop()">
+<svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #0a0a0a;">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+</svg>
+</div>
+
+<script>
+window.addEventListener('scroll', function() {
+var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+var scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+var scrollTop = document.getElementById('scrollTop');
+if (winScroll > 300) { scrollTop.classList.add('visible'); } else { scrollTop.classList.remove('visible'); }
+});
+
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+function createParticles() {
+var container = document.getElementById('particles');
+var isMobile = window.innerWidth < 768;
+var count = isMobile ? 20 : 50;
+for (var i = 0; i < count; i++) {
+var particle = document.createElement('div');
+particle.className = 'particle';
+particle.style.left = Math.random() * 100 + '%';
+particle.style.animationDelay = Math.random() * 20 + 's';
+particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+container.appendChild(particle);
+}
+}
+createParticles();
+
+function reveal() {
+var reveals = document.querySelectorAll(".reveal");
+for (var i = 0; i < reveals.length; i++) {
+var windowHeight = window.innerHeight;
+var elementTop = reveals[i].getBoundingClientRect().top;
+var elementVisible = 100;
+if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add("active"); }
+}
+}
+window.addEventListener("scroll", reveal);
+window.addEventListener("load", reveal);
+reveal();
+
+// Карусель
+var currentSlide = 0;
+var track = document.getElementById('carouselTrack');
+var slides = track.querySelectorAll('.carousel-slide');
+var totalSlides = slides.length;
+var dots = document.querySelectorAll('.carousel-dot');
+
+function getSlidesPerView() {
+if (window.innerWidth >= 1024) return 3;
+if (window.innerWidth >= 768) return 2;
+return 1;
+}
+
+function updateCarousel() {
+var slidesPerView = getSlidesPerView();
+var maxSlide = Math.max(0, totalSlides - slidesPerView);
+if (currentSlide > maxSlide) currentSlide = maxSlide;
+if (currentSlide < 0) currentSlide = 0;
+var slideWidth = 100 / slidesPerView;
+track.style.transform = 'translateX(-' + (currentSlide * slideWidth) + '%)';
+dots.forEach(function(dot, idx) {
+dot.classList.toggle('active', idx === currentSlide);
+});
+}
+
+document.getElementById('prevBtn').addEventListener('click', function() { currentSlide--; updateCarousel(); });
+document.getElementById('nextBtn').addEventListener('click', function() { currentSlide++; updateCarousel(); });
+dots.forEach(function(dot) {
+dot.addEventListener('click', function() { currentSlide = parseInt(this.dataset.index); updateCarousel(); });
+});
+window.addEventListener('resize', updateCarousel);
+
+// Аккордеон
+var accordionItems = document.querySelectorAll('.accordion-item');
+accordionItems.forEach(function(item) {
+var header = item.querySelector('.accordion-header');
+header.addEventListener('click', function() {
+var isActive = item.classList.contains('active');
+accordionItems.forEach(function(otherItem) { otherItem.classList.remove('active'); });
+if (!isActive) { item.classList.add('active'); }
+});
+});
+</script>
+</body>
+</html>
+
