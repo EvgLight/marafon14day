@@ -609,14 +609,20 @@ html { scroll-behavior: smooth; }
 </div>
 </div>
 
-<!-- Цитата под фото без рамки, с логотипом JLight -->
-<div class="quote-with-logo mt-4">
-<p class="text-base sm:text-lg md:text-xl italic serif leading-relaxed relative z-10" style="color: #D4B896;">
-Моя цель — не просто «утешить» вас. Моя цель — вернуть вам вашу субъектность, телесную опору и право на собственную жизнь.
-</p>
-<!-- Логотип JLight в правом нижнем углу -->
-<div class="signature" style="position: absolute; bottom: 0; right: 10px; font-size: 28px; color: #D4B896; opacity: 0.8; filter: drop-shadow(0 0 15px rgba(212, 184, 150, 0.5));">JLight</div>
-</div>
+<!-- Цитата под фото с эффектом свечения и логотипом JLight -->
+<div class="mt-6 relative" style="min-height: 140px; padding: 20px;">
+  <!-- Фоновое свечение -->
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 80%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.03) 50%, transparent 70%); pointer-events: none;"></div>
+  
+  <!-- Цитата -->
+  <p class="text-base sm:text-lg md:text-xl italic serif leading-relaxed relative z-10 mb-6" style="color: #D4B896; text-shadow: 0 0 20px rgba(212, 184, 150, 0.3);">
+    Моя цель — не просто «утешить» вас. Моя цель — вернуть вам вашу субъектность, телесную опору и право на собственную жизнь.
+  </p>
+  
+  <!-- Логотип JLight в правом нижнем углу -->
+  <div class="absolute bottom-0 right-4 sm:right-6 z-10" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px; color: #D4B896; text-shadow: 0 0 15px rgba(212, 184, 150, 0.6), 0 0 30px rgba(255,255,255,0.3); letter-spacing: 1px;">
+    JLight
+  </div>
 </div>
 
 <!-- Текст справа -->
